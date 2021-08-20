@@ -12,4 +12,8 @@ const findIndexOfBalancing = (arr) => {
     if (leftSum > rightSum) return -1;
   }
 };
-console.log(findIndexOfBalancing([1, 0, 1, 0]));
+console.log(findIndexOfBalancing(arr));
+
+module.exports = {
+  findIndexOfBalancing,
+};
