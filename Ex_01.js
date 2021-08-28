@@ -1,5 +1,3 @@
-const { ModuleKind } = require("typescript");
-
 const taskFactorySample = (delay, resolve, val) => () =>
   new Promise((res, rej) => setTimeout(resolve ? res : rej, delay, val));
 const tasks = [
@@ -11,29 +9,46 @@ const tasks = [
   taskFactorySample(1000, false, "error"),
 ];
 
-const getTask = async (task) => {
-  try {
-    const res = await task();
-    return { val: res };
-  } catch (err) {
-    return { error: err };
-  }
+const runBatches = (tasks, pool_size) => {
+  const input = [...tasks];
+  let r = 0;
+  const a = [];
+  return new Promise((resolve) => {
+    const s = (inputTasks) => {
+      while (inputTasks.length > 0 && r < pool_size) {
+        let task = inputTasks.shift();
+        r++;
+        task()
+          .then((res) => {
+            a.push({ value: res });
+            if (inputTasks.length === 0 && a.length === tasks.length) {
+              resolve(a);
+            }
+            r--;
+            if (inputTasks.length > 0) {
+              s(inputTasks);
+            }
+          })
+          .catch((err) => {
+            a.push({ value: err });
+            if (inputTasks.length === 0 && a.length === tasks.length) {
+              resolve(a);
+            }
+            r--;
+            if (inputTasks.length > 0) {
+              s(inputTasks);
+            }
+          });
+      }
+    };
+    s(input);
+  });
 };
 
-const runBatches = async (tasks, pool_size) => {
-  let res = [];
-  for (let i = 0; i < tasks.length; i = i + pool_size) {
-    const data = tasks.slice(i, i + pool_size).map((task) => getTask(task));
-    const ans = await Promise.all(data);
-    res.push(...ans);
-  }
-  return res;
-};
-
-const pool_size = 2;
-runBatches(tasks, pool_size).then(console.log);
+const pool_size = 6;
 
 const tasksLength = tasks.length;
 const batches = runBatches(tasks, pool_size);
+batches.then(console.log);
 
 module.exports = { tasksLength, batches };

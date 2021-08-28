@@ -23,11 +23,6 @@ const longestRunOfTwoNumbers = (string) => {
   return output.length > 0 ? output.join("") : arr.join("");
 };
 
-const input = "1212223311212223";
-console.log(longestRunOfTwoNumbers(input));
-const input_2 = "111";
-console.log(longestRunOfTwoNumbers(input_2));
-
 module.exports = {
   longestRunOfTwoNumbers,
 };

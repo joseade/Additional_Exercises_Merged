@@ -23,11 +23,13 @@ const requestChain = result
   .then((data) => data.json())
   .then((res) => console.log(res))
   .catch((err) => {
+    console.log(err);
     if (err.name === "FetchError") {
+      console.log(err);
       return "Fetch request has been cancelled";
     }
   });
 
-result.cancel();
+//result.cancel();
 
-module.exports = { requestChain };
+module.exports = { requestChain, result };

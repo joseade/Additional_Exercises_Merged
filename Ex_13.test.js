@@ -22,4 +22,5 @@ t730.insertChild(4);
 test("Nodes are found at the same depth", () => {
   expect(isSameLevel(t, 1, 1)).toBeFalsy();
   expect(isSameLevel(t, 3, 3)).toBeTruthy();
+  expect(isSameLevel(t, 6, 4)).toBeTruthy();
 });

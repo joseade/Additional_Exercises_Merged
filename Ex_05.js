@@ -1,24 +1,38 @@
-const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-const blockSize = 3;
+// const reverseBlocks = (arr, size) => {
+//   if (size > arr.length) return false;
+//   if (size === arr.length) return arr;
+//   let reverseArray = [];
+//   let start = 0;
+//   for (let i = 0; i < arr.length / size; i++) {
+//     if (i + 1 > arr.length / size) {
+//       reverseArray.push(...arr.slice(start, arr.length).reverse());
+//       break;
+//     }
+//     let end = start + size;
+//     reverseArray.push(...arr.slice(start, end).reverse());
+//     start = end;
+//   }
+//   return reverseArray;
+// };
 
 const reverseBlocks = (arr, size) => {
-  if (size > arr.length) return false;
+  if (size > arr.length || size <= 0) return false;
   if (size === arr.length) return arr;
-  let reverseArray = [];
-  let start = 0;
-  for (let i = 0; i < arr.length / size; i++) {
-    if (i + 1 > arr.length / size) {
-      reverseArray.push(...arr.slice(start, arr.length));
-      break;
+  let i;
+  for (i = 0; i < arr.length - size; i += size) {
+    for (let j = 0; j < Math.floor(size / 2); j++) {
+      [arr[i + j], arr[i - j + size - 1]] = [arr[i - j + size - 1], arr[i + j]];
     }
-    let end = start + size;
-    reverseArray.push(...arr.slice(start, end).reverse());
-    start = end;
   }
-  return reverseArray;
+  const last = arr.length - i;
+  for (; i < arr.length; i += last) {
+    for (let j = 0; j < Math.floor(last / 2); j++) {
+      [arr[i + j], arr[i - j + last - 1]] = [arr[i - j + last - 1], arr[i + j]];
+    }
+  }
+  return arr;
 };
 
-console.log(reverseBlocks(arr, blockSize));
 module.exports = {
   reverseBlocks,
 };

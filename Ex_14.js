@@ -1,13 +1,25 @@
 const findAreaOfBinaryMatrix = (matrix) => {
-  let maxArea = 0;
+  let largestArea = 0;
   const x = new Array(matrix[0].length).fill(0);
   const area = (m) => {
-    const max = (m) => {
-      return Math.min(...m) * m.length;
-    };
+    function maxAreaHistogram(arr) {
+      let maxArea = 0;
+
+      for (let i = 0; i < arr.length; i++) {
+        for (let j = i; j < arr.length; j++) {
+          minHeight = Math.min(arr[i], arr[j]);
+          for (let k = i; k < j; k++) {
+            minHeight = Math.min(minHeight, arr[k]);
+          }
+          maxArea = Math.max(maxArea, minHeight * (j - i + 1));
+        }
+      }
+      return maxArea;
+    }
+
     let y = 0;
     m.forEach((e) => {
-      const c = max(Array.from(e, Number));
+      const c = maxAreaHistogram(Array.from(e, Number));
       if (c > y) {
         y = c;
       }
@@ -22,35 +34,16 @@ const findAreaOfBinaryMatrix = (matrix) => {
       }
       x[index] += e;
     }
-    const maxAreaOfRow = area(x.join("").match(/[1-9]+/gi));
-    //console.log(x, maxAreaOfRow);
-    if (maxAreaOfRow > maxArea) {
-      maxArea = maxAreaOfRow;
+    const findHistograms = x.join("").match(/[1-9]+/gi);
+    if (findHistograms) {
+      const maxAreaOfRow = area(findHistograms);
+      if (maxAreaOfRow > largestArea) {
+        largestArea = maxAreaOfRow;
+      }
     }
   }
-  return maxArea;
+  return largestArea;
 };
-
-// const bMatrix = [
-//   [0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0],
-//   [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
-//   [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0],
-//   [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-//   [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0],
-//   [0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-//   [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
-// ];
-
-const secondBMatrix = [
-  [1, 0, 0, 1, 1, 1],
-  [1, 0, 1, 1, 0, 1],
-  [0, 1, 1, 1, 1, 1],
-  [0, 0, 1, 1, 1, 1],
-];
-
-console.log(findAreaOfBinaryMatrix(secondBMatrix));
 
 module.exports = {
   findAreaOfBinaryMatrix,

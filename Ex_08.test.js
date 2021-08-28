@@ -1,5 +1,19 @@
-const { oldObj, flattenImperative, flattenFunctional } = require("./Ex_08.js");
-
+const { flattenImperative, flattenFunctional } = require("./Ex_08.js");
+const oldObj = {
+  name: "Sara",
+  gender: "Apache Attack Helicopter",
+  address: {
+    location: {
+      city: "SF",
+      state: "CA",
+    },
+    preferredLocation: {
+      city: "SF",
+      state: ["CA", "MN"],
+    },
+    other: undefined,
+  },
+};
 test("Flatten an object", () => {
   expect(flattenImperative(oldObj, "oldObj")).toStrictEqual({
     oldObj_name: "Sara",

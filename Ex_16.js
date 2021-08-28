@@ -17,50 +17,25 @@ const hasLoop = function (list) {
   while (hare.next && hare.next.next) {
     tortoise = tortoise.next;
     hare = hare.next.next;
-    if (tortoise === hare) return true;
+    if (tortoise === hare) return hare;
   }
   return false;
 };
 
-const ll = new LinkedList();
-const a = new Node(1);
-const b = new Node(2);
-const c = new Node(2);
-const d = new Node(3);
-const e = new Node(3);
-const f = new Node(6);
-const g = new Node(7);
-const h = new Node(2);
-const i = new Node(1);
-
-ll.head = a;
-a.next = b;
-b.next = c;
-c.next = d;
-d.next = e;
-e.next = f;
-f.next = g;
-g.next = h;
-h.next = i;
-i.next = d;
-
 function findInitialNode(list) {
-  if (!hasLoop(list)) return false;
+  const nodeInsideLoop = hasLoop(list);
+  if (!nodeInsideLoop) return false;
 
-  const s = new Set();
-  let current = list.head;
-  let beginningNode;
+  let head = list.head;
+  let tail = nodeInsideLoop;
 
-  while (!s.has(current)) {
-    s.add(current);
-    current = current.next;
-    beginningNode = current;
+  while (head !== tail) {
+    head = head.next;
+    tail = tail.next;
   }
-
-  return beginningNode;
+  return tail;
 }
 
-console.log(findInitialNode(ll));
 module.exports = {
   LinkedList,
   Node,

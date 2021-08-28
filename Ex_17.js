@@ -13,7 +13,7 @@ class LinkedList {
 
   insert(data) {
     this.head = new Node(data, this.head);
-    this.size += this.size;
+    this.size += 1;
   }
 
   toArray() {
@@ -28,19 +28,24 @@ class LinkedList {
 }
 
 function isPalindrome(linkedList) {
-  const arr = linkedList.toArray();
-  const reverse = [...arr].reverse();
+  let head = linkedList.head;
+  const q = [head.data];
+  while (head.next) {
+    head = head.next;
+    q.push(head.data);
+  }
 
-  return arr.join("") === reverse.join("");
+  head = linkedList.head;
+
+  while (q.length > 0) {
+    const last = q.pop();
+    if (last !== head.data) {
+      return false;
+    }
+    head = head.next;
+  }
+  return true;
 }
-
-const ll = new LinkedList();
-ll.insert(400);
-ll.insert(200);
-ll.insert(200);
-ll.insert(400);
-
-console.log(isPalindrome(ll));
 
 module.exports = {
   LinkedList,

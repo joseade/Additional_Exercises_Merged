@@ -1,24 +1,3 @@
-const oldObj = {
-  name: "Sara",
-  gender: "Apache Attack Helicopter",
-  address: {
-    location: {
-      city: "SF",
-      state: "CA",
-    },
-    preferredLocation: {
-      city: "SF",
-      state: ["CA", "MN"],
-    },
-    other: undefined,
-  },
-};
-/**
- *
- * @param {Object} oldObject
- * @param {String} parentName
- */
-
 function flattenImperative(oldObject, parentName) {
   let result = {};
   for (const [key, value] of Object.entries(oldObject)) {
@@ -43,10 +22,7 @@ function flattenFunctional(oldObject, parentName) {
   }, {});
 }
 
-console.log(flattenImperative(oldObj, "oldObj"));
-console.log(flattenFunctional(oldObj, "oldObj"));
 module.exports = {
   flattenImperative,
   flattenFunctional,
-  oldObj,
 };

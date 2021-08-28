@@ -7,6 +7,9 @@ const querySelectorAll = (selector) => {
 
 console.log(querySelectorAll("div.note < input.is-complete[checked]"));
 
+const str = "div.note < span a";
+console.log(querySelectorAll(str));
+
 module.exports = {
   querySelectorAll,
 };
