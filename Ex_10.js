@@ -1,40 +1,33 @@
-const bTree = "(A,(B,(D),(E)),(C,(F,(H),(I)),(G,,(J))))";
-//const bTree = "(A,(B,(D),(E)),(C,(F),(G)))";
 const getList = (str) => {
-  const arr = Array.from(str);
   const adjacencyList = new Map();
-
+  const arr = Array.from(str);
+  const q = [];
   for (let [index, char] of arr.entries()) {
-    if (char === ("(" || ")" || ",")) continue;
-    if (index > 0 && arr[index - 1] === "(" && arr[index + 1] === ")") {
-      adjacencyList.set(char, [null, null]);
+    if (char === "(" && arr[index + 2] === ")") {
+      adjacencyList.set(arr[index + 1], [null, null]);
+      q.push(arr[index + 1]);
       continue;
     }
-    if (index > 0 && arr[index - 1] === "(") {
-      let right = null;
-      let re = new RegExp(`,\\(${char},\\(.\\),\\(.\\)\\)`, "gi");
-      right = str.match(re);
-      if (right) {
-        right = right[0].slice(-3, -2);
-      }
-      if (!right) {
-        re = new RegExp(`,\\(${char},,\\(.\\)\\)`, "gi");
-        right = str.match(re);
-        if (right) {
-          right = right[0].slice(-3, -2);
+    if (char === ")") {
+      if (q.length > 0) {
+        const c = q.pop();
+        if (q.length > 0) {
+          adjacencyList.get(q[q.length - 1]).push(c);
+        }
+        // } else {
+        //   adjacencyList.get(c).push(null);
+        // }
+        if (adjacencyList.get(c).length < 2) {
+          adjacencyList.get(c).push(null);
         }
       }
-      if (!right) {
-        re = new RegExp(`\\(${char}.*?\\)\\),\\(.`, "gi");
-        right = str.match(re);
-        right = right[0].slice(-1);
-      }
-
-      if (arr[index + 3] !== ("(" || ")" || ",")) {
-        adjacencyList.set(char, [arr[index + 3], right]);
-        continue;
-      }
-      adjacencyList.set(char, [null, right]);
+    }
+    if (char === "," && arr[index + 1] === ",") {
+      adjacencyList.get(q[q.length - 1]).push(null);
+    }
+    if (char === "(") {
+      adjacencyList.set(arr[index + 1], []);
+      q.push(arr[index + 1]);
     }
   }
   return adjacencyList;
@@ -96,10 +89,6 @@ const printTree = (tree, order = "infix") => {
       return postorderTraversal(root, adjacencyList);
   }
 };
-
-// console.log(printTree(bTree));
-// console.log(printTree(bTree, "prefix"));
-// console.log(printTree(bTree, "postfix"));
 
 module.exports = {
   printTree,

@@ -12,9 +12,13 @@ test("Determine if a tree is a symmetric", () => {
   checked></div>
      <div id="4" class="note"></div>
      <div id="5" class="note"><input type="checkbox" class="is-complete"
-  checked></div>`;
+  checked></div>
+      <div id="6" class="note">
+      <span><a>Hello</a></span>
+      </div>`;
 
   expect(querySelectorAll("div.note < input.is-complete[checked]").length).toBe(
     3
   );
+  expect(querySelectorAll("div.note < span a").length).toBe(1);
 });

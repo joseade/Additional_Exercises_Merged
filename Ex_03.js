@@ -16,20 +16,4 @@ const cancellableFetch = (url) => {
   };
 };
 
-const url = "https://jsonplaceholder.typicode.com/todos";
-const result = cancellableFetch(url);
-
-const requestChain = result
-  .then((data) => data.json())
-  .then((res) => console.log(res))
-  .catch((err) => {
-    console.log(err);
-    if (err.name === "FetchError") {
-      console.log(err);
-      return "Fetch request has been cancelled";
-    }
-  });
-
-//result.cancel();
-
-module.exports = { requestChain, result };
+module.exports = { cancellableFetch };

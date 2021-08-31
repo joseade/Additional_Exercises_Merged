@@ -1,7 +1,7 @@
 /**
  * @jest-environment jsdom
  */
-const { requestChain, result } = require("./Ex_03.js");
+const { cancellableFetch } = require("./Ex_03.js");
 
 describe("Mocking aborts", () => {
   beforeEach(() => {
@@ -14,30 +14,21 @@ describe("Mocking aborts", () => {
   });
 
   it("Testing cancellable fetch request", async () => {
-    fetch.mockResponses(
-      [
-        JSON.stringify([{ name: "naruto", average_score: 79 }]),
-        { status: 200 },
-      ],
-      [
-        JSON.stringify([{ name: "bleach", average_score: 68 }]),
-        { status: 200 },
-      ],
-      [
-        JSON.stringify([{ name: "one piece", average_score: 80 }]),
-        { status: 200 },
-      ],
-      [
-        JSON.stringify([{ name: "shingeki", average_score: 91 }]),
-        { status: 200 },
-      ]
-    );
+    fetch.mockResponses([
+      JSON.stringify([{ name: "naruto", average_score: 79 }]),
+      { status: 200 },
+    ]);
+    fetch.mockAbortOnce();
+    const result = cancellableFetch("/");
+    result
+      .then((res) => res.json())
+      .then((data) => data)
+      .catch((err) => {
+        console.log(err);
+      });
 
-    expect(fetch("/")).rejects.toThrow("The operation was aborted. ");
+    result.cancel();
+
+    expect(result.cancel()).toBeUndefined();
   });
-
-  // it("Testing cancellable fetch request", async () => {
-  //   const result = await requestChain;
-  //   expect(result).toEqual("Fetch request has been cancelled");
-  // });
 });
