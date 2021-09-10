@@ -1,13 +1,5 @@
 const taskFactorySample = (delay, resolve, val) => () =>
   new Promise((res, rej) => setTimeout(resolve ? res : rej, delay, val));
-const tasks = [
-  taskFactorySample(500, true, 1),
-  taskFactorySample(1000, true, 2),
-  taskFactorySample(5000, false, "error"),
-  taskFactorySample(2000, true, 4),
-  taskFactorySample(1000, false, "error"),
-  taskFactorySample(1000, false, "error"),
-];
 
 const runBatches = (tasks, pool_size) => {
   const input = [...tasks];
@@ -20,9 +12,17 @@ const runBatches = (tasks, pool_size) => {
         r++;
         task()
           .then((res) => {
-            a.push({ value: res });
+            a.push({ value: res, position: tasks.indexOf(task), origin: true });
             if (inputTasks.length === 0 && a.length === tasks.length) {
-              resolve(a);
+              const res = a.sort((a, b) => a.position - b.position);
+              resolve(
+                res.map((e) => {
+                  if (e.origin) {
+                    return { value: e.value };
+                  }
+                  return { error: e.value };
+                })
+              );
             }
             r--;
             if (inputTasks.length > 0) {
@@ -30,9 +30,21 @@ const runBatches = (tasks, pool_size) => {
             }
           })
           .catch((err) => {
-            a.push({ value: err });
+            a.push({
+              value: err,
+              position: tasks.indexOf(task),
+              origin: false,
+            });
             if (inputTasks.length === 0 && a.length === tasks.length) {
-              resolve(a);
+              const res = a.sort((a, b) => a.position - b.position);
+              resolve(
+                res.map((e) => {
+                  if (e.origin) {
+                    return { value: e.value };
+                  }
+                  return { error: e.value };
+                })
+              );
             }
             r--;
             if (inputTasks.length > 0) {
@@ -45,10 +57,4 @@ const runBatches = (tasks, pool_size) => {
   });
 };
 
-const pool_size = 6;
-
-const tasksLength = tasks.length;
-const batches = runBatches(tasks, pool_size);
-batches.then(console.log);
-
-module.exports = { tasksLength, batches };
+module.exports = { taskFactorySample, runBatches };

@@ -1,8 +1,4 @@
 const urlQuery = (url) => () => fetch(url);
-const maxRetry = 4;
-const useIncrement = true;
-const delay = 5000;
-
 const getData = async (urlQuery) => {
   try {
     const res = await urlQuery();
@@ -37,8 +33,4 @@ const queryRetry = async (urlQuery, maxRetry, delay, useIncrement) => {
   }
 };
 
-const url = "https://jsonplaceholder.typicode.com/todos";
-const result = queryRetry(urlQuery(url), maxRetry, delay, useIncrement);
-result.then(console.log).catch((e) => console.log("EEEE"));
-
-module.exports = { result };
+module.exports = { queryRetry, urlQuery };

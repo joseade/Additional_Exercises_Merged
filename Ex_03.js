@@ -1,6 +1,6 @@
 const cancellableFetch = (url) => {
-  var controller = new AbortController();
-  var signal = controller.signal;
+  const controller = new AbortController();
+  const signal = controller.signal;
   const request = fetch(url, { signal });
 
   return {

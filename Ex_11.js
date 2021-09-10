@@ -3,14 +3,12 @@ const querySelectorAll = (selector) => {
   const splitSelector = selector.match(regex);
   const parentSelector = splitSelector[0].slice(0, -1);
   const childSelector = splitSelector[1].slice(1);
-  const possibleParents = document.querySelectorAll(parentSelector);
-  const parents = [];
-  possibleParents.forEach((possibleParent) => {
-    if (possibleParent.querySelector(childSelector)) {
-      parents.push(possibleParent);
-    }
-  });
-
+  if (parentSelector === "") {
+    return document.querySelectorAll(childSelector);
+  }
+  const parents = Array.from(document.querySelectorAll(childSelector)).map(
+    (child) => child.closest(parentSelector)
+  );
   return parents;
 };
 

@@ -99,18 +99,23 @@ const initialConfiguration = (side) => {
 
   container.append(equilateral);
 };
-initialConfiguration(500);
+// initialConfiguration(500);
 
-document.querySelector("form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const iteration = document.getElementById("iteration").value;
-  console.log(iteration);
-  document.querySelector(".container").innerHTML = "";
-  if (iteration === 0) {
-    console.log("AAA");
-    initialConfiguration(500);
-  }
-  if (iteration > 0) {
-    printTriangle(iteration);
-  }
-});
+// document.querySelector("form").addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   const iteration = document.getElementById("iteration").value;
+//   console.log(iteration);
+//   document.querySelector(".container").innerHTML = "";
+//   if (iteration === 0) {
+//     initialConfiguration(500);
+//   }
+//   if (iteration > 0) {
+//     printTriangle(iteration);
+//   }
+// });
+
+module.exports = {
+  Triangle,
+  printTriangle,
+  initialConfiguration,
+};

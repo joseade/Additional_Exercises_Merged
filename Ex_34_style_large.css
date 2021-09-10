@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Tangerine&display=swap");
+:root {
+  --cursive-font: "Tangerine";
+  --main-color: rgb(73, 182, 176);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+a:visited {
+  color: var(--main-color);
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 18.61% 1fr;
+  /* grid-template-rows: 11.56% 23.5% 15% 4.7% 38.54% 6.7%; */
+  grid-template-rows: 11.56% 23.5% 10% 14.7% 31.54% 8.7%;
+}
+.small-image {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.nav-header {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+header {
+  grid-column: 2/-1;
+  grid-row: 1/3;
+}
+
+aside {
+  grid-column: 1/2;
+  grid-row: 3/6;
+}
+
+.nav-detailed {
+  grid-column: 2/-1;
+  grid-row: 3/4;
+}
+
+.signup {
+  grid-column: 2/-1;
+  grid-row: 4/5;
+}
+
+main {
+  grid-column: 2/-1;
+  grid-row: 5/6;
+}
+
+footer {
+  grid-column: 1/-1;
+  grid-row: 6/7;
+}
+
+/* small-image */
+.small-image {
+  position: relative;
+}
+.small-image img {
+  border-radius: 50%;
+  width: 11.56vh;
+  height: 11.56vh;
+}
+.small-image .container {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 5.78vh;
+  left: 5.78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* nav-header */
+.nav-header .nav-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
+}
+
+.nav-header .nav-list .tutorials a {
+  background: url("./html-css-assets/local_library.svg");
+  background-repeat: no-repeat;
+  background-position: left 0px top 50%;
+  padding-left: 2rem;
+}
+.nav-header .nav-list .news a {
+  background: url("./html-css-assets/amp_stories.svg");
+  background-repeat: no-repeat;
+  background-position: left 0px top 50%;
+  padding-left: 2rem;
+}
+.nav-header .nav-list .top-tips a {
+  background: url("./html-css-assets/military_tech.svg");
+  background-repeat: no-repeat;
+  background-position: left 0px top 50%;
+  padding-left: 2rem;
+}
+.nav-header .nav-list .nav-item {
+  font-size: 1.4rem;
+}
+.nav-header .nav-list .contact a {
+  background: url("./html-css-assets/connect_without_contact.svg");
+  background-repeat: no-repeat;
+  background-position: left 0px top 50%;
+  padding-left: 2rem;
+}
+.nav-header .nav-list .about a {
+  background: url("./html-css-assets/person_pin.svg");
+  background-repeat: no-repeat;
+  background-position: left 0px top 50%;
+  padding-left: 2rem;
+}
+/* header */
+header {
+  position: relative;
+  background: url("./html-css-assets/feature-story.jpg");
+  background-position: left 0px top 50%;
+  background-size: 100% 170%;
+  background-repeat: no-repeat;
+}
+
+header .title {
+  position: absolute;
+  top: 65%;
+  background: white;
+  padding: 0.3rem 2.3rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+header .sub-title {
+  position: absolute;
+  top: 77%;
+  color: white;
+  background: black;
+  padding: 0.2rem 1.4rem;
+  font-size: 1.5rem;
+}
+/* aside */
+aside {
+  padding-right: 3rem;
+}
+aside article {
+  padding-bottom: 3rem;
+}
+aside article .title {
+  text-transform: uppercase;
+  border-bottom: 1px dashed black;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+aside article .content {
+  line-height: 2;
+  font-size: 0.9rem;
+  padding: 0.7rem 0px;
+}
+aside article button {
+  border: 1px solid gray;
+  width: auto;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+aside button img {
+  height: 1rem;
+}
+
+/* nav-detailed */
+.nav-detailed .nav-list {
+  display: flex;
+  background-color: rgb(191, 226, 228);
+  height: 100%;
+}
+.nav-detailed .nav-list .nav-item {
+  flex: 1;
+}
+.nav-detailed .nav-list .nav-item a {
+  display: block;
+  padding-top: 1.5rem;
+  padding-left: 1rem;
+  height: 100%;
+  width: 100%;
+}
+.nav-detailed .nav-list .nav-item a .title {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+.nav-detailed .nav-list .nav-item a:hover {
+  background-color: rgb(117, 143, 145);
+}
+
+/* signup */
+.signup {
+  display: flex;
+  align-items: center;
+}
+
+.signup .container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px dashed black;
+  border-bottom: 1px dashed black;
+}
+
+.signup .container .text {
+  flex-basis: 50%;
+}
+
+.signup .container form {
+  flex-basis: 40%;
+}
+.signup .container form input[type="text"] {
+  border: 1px solid gray;
+  padding: 0.2rem 0rem;
+  font-size: 1.1rem;
+  width: 65%;
+}
+.signup .container form button {
+  border: 1px solid gray;
+  color: rgb(131, 129, 129);
+  padding: 0.2rem 0rem;
+  justify-content: center;
+  font-size: 1.1rem;
+  width: 30%;
+  margin-left: -1rem;
+}
+
+.recent-news {
+  /* margin-top: 21px; */
+  display: flex;
+  gap: 10px;
+}
+.recent-news article {
+  flex: 1;
+}
+
+.recent-news .first-article img {
+  width: 100%;
+  height: 30%;
+  border-style: ridge;
+  border-width: medium;
+}
+.recent-news .second-article img {
+  height: 37%;
+  width: 100%;
+  border-style: ridge;
+  border-width: medium;
+}
+.recent-news .third-article img {
+  height: 37%;
+  width: 100%;
+  border-style: ridge;
+  border-width: medium;
+}
+.recent-news .last-article img {
+  width: 100%;
+  height: 37%;
+  border-style: ridge;
+  border-width: medium;
+}
+.recent-news article .content {
+  padding: 4px 0px;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed black;
+}
+footer .social-network {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+}
+footer .social-network img {
+  height: 50%;
+}
+footer .policy ul {
+  display: flex;
+  list-style: none;
+}
+footer .policy ul li {
+  padding-left: 0px;
+}
+footer .policy ul li:nth-child(2) {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  margin: 0 5px;
+  padding: 0 5px;
+}
+
+.small-image .container > div {
+  font-family: var(--cursive-font);
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+header .sub-title {
+  font-family: var(--cursive-font);
+  font-size: 1.5rem;
+  font-stretch: 50%;
+}
+
+.nav-detailed .nav-list .nav-item a .sub-title {
+  font-family: var(--cursive-font);
+  font-size: 1.4rem;
+}
+
+.signup .container .text {
+  font-family: var(--cursive-font);
+  font-size: 2rem;
+}
+
+.recent-news article .title {
+  color: var(--main-color);
+  font-size: 1.4rem;
+}
+
+.recent-news article p {
+  font-size: 1.2rem;
+}
+
+.date span:nth-child(2) {
+  color: var(--main-color);
+  font-weight: bold;
+}
+
+.date span:first-child {
+  color: gray;
+}
+
+footer {
+  font-size: 1.2rem;
+}
+
+footer .social-network > img {
+  filter: grayscale(90%);
+}
+
+aside article button {
+  color: var(--main-color);
+  font-size: 1rem;
+}
+
+aside article img {
+  filter: invert(1) sepia(1) saturate(5) hue-rotate(135deg);
+}
+
+.last-container {
+  display: none;
+}

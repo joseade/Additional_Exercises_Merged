@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    a.fancy-button {
+      margin-top: 100px;
+      border: 1px solid rgb(95, 94, 94);
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 1px white, inset 0 0 0 4px #ddd,
+        inset 0 -1px 4px 3px rgb(31, 31, 31);
+      padding: 10px;
+
+      text-decoration: none;
+      text-transform: uppercase;
+      background: linear-gradient(
+        to bottom,
+        rgb(231, 231, 231) 50%,
+        rgb(214, 214, 214) 50%
+      );
+      font-family: Arial;
+      font-weight: bold;
+      color: rgb(73, 73, 73);
+    }
+    a::after {
+      content: "\2B51";
+      color: rgb(136, 136, 136);
+      font-size: 20px;
+      margin-left: 7px;
+    }
+    a::before {
+      content: "\2B51";
+      color: rgb(136, 136, 136);
+      font-size: 20px;
+      margin-right: 7px;
+    }
+
+    form {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 300px;
+      height: 70px;
+      align-content: space-evenly;
+      align-items: center;
+    }
+    input {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid black;
+    }
+
+    div::after {
+      position: absolute;
+      display: block;
+      content: attr(data-hint);
+      font-size: 8px;
+      height: 8px;
+      background-color: black;
+      color: white;
+      left: 132px;
+      top: -3px;
+      padding: 2px;
+      box-shadow: 1px 1px 2px 0.2px black;
+    }
+    div::before {
+      position: absolute;
+      content: "";
+      height: 0;
+      width: 0;
+      border: 8px solid transparent;
+      border-top-color: black;
+      left: 142px;
+      top: 4px;
+    }
+
+    button {
+      background-color: coral;
+      font-weight: bold;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <br />
+    <br />
+    <a class="fancy-button" href="/checkout">checkout</a>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <form>
+      <label>intekglobal.com/</label>
+      <div class="form-field" data-hint="Type 5 characters or more">
+        <input name="url" type="text" placeholder="url" />
+      </div>
+      <button>Setup now!</button>
+    </form>
+  </body>
+</html>

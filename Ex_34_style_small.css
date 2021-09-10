@@ -1,0 +1,128 @@
+body {
+  display: block;
+  column-count: 2;
+}
+
+/* small-image */
+.small-image {
+  display: flex;
+  justify-content: center;
+}
+.small-image img {
+  border-radius: 50%;
+  width: 9vh;
+  height: 9vh;
+}
+.small-image .container {
+  top: 4.5vh;
+  left: 24.5vw;
+}
+.small-image .container > div {
+  font-size: 1.2rem;
+}
+/* nav-header */
+.nav-header .nav-list {
+  justify-content: space-evenly;
+  gap: 0rem;
+  padding-top: 0px;
+}
+
+.nav-header .nav-list .nav-item a {
+  display: inline-block;
+  background: none;
+  padding-left: 0%;
+  background-position: left 50% top 0%;
+  padding-top: 0rem;
+}
+/* header */
+header {
+  height: 30%;
+}
+
+.signup .container {
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-content: space-around;
+}
+.signup .container .text {
+  font-size: 1.2rem;
+  flex-basis: 80%;
+}
+.signup form {
+  text-align: center;
+  flex: 1;
+}
+
+main {
+  flex-direction: column;
+}
+
+.nav-header {
+  border-bottom: 1px dashed black;
+  padding: 0.5rem;
+}
+
+.nav-header .nav-list .nav-item {
+  font-size: 1.2rem;
+}
+
+.small-image {
+  padding: 0.4rem 0px;
+}
+
+header .title {
+  font-size: 1.5rem;
+  top: 78%;
+}
+
+header .sub-title {
+  width: 100%;
+  top: auto;
+  bottom: 0px;
+}
+
+.nav-detailed .nav-list .nav-item a .title {
+  padding: 0.3rem 0px;
+  font-size: 1.2rem;
+}
+
+.signup {
+  height: 10%;
+}
+
+.signup .container form input[type="text"] {
+  font-size: 0.9rem;
+}
+
+.signup .container form button {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+.recent-news article {
+  border-bottom: 1px dashed black;
+}
+
+.recent-news .first-article img {
+  height: 50%;
+}
+
+.last-container {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  background-color: white;
+  /* transform: translate(-50%, -50%); */
+  width: 50%;
+  height: 13%;
+  /* border: 1px solid black; */
+}
+
+.last-container .nav-detailed {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.last-container {
+  display: block;
+}
