@@ -2,10 +2,10 @@
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import App from "./App";
+import { store } from "../app/store";
+import App from "../App";
 
-import { searchImages, searchImagesSucces } from "./components/gallerySlice";
+import { searchImages, searchImagesSucces } from "../components/gallerySlice";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 
@@ -81,6 +81,13 @@ afterEach(() => {
 afterAll(() => {
   server.close();
 });
+
+import axios, { AxiosStatic } from "axios";
+
+interface AxiosMock extends AxiosStatic {
+  mockResolvedValue: Function;
+  mockRejectedValue: Function;
+}
 
 test("renders learn react link", async () => {
   const res = await fetch("http://localhost:4000/gallery/10/?count=10&page=1");

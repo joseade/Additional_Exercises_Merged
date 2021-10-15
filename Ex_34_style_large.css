@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Tangerine&display=swap");
 :root {
   --cursive-font: "Tangerine";
-  --main-color: rgb(73, 182, 176);
+  --main-color: #72d3d2;
+
+  /* --main-color: rgb(73, 182, 176); */
 }
 * {
   margin: 0;
@@ -24,7 +26,9 @@ ul {
   list-style: none;
 }
 
-body {
+.main-container {
+  max-width: 1000px;
+  margin: 0 auto;
   display: grid;
   height: 100vh;
   grid-template-columns: 18.61% 1fr;
@@ -89,6 +93,7 @@ footer {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
+  text-shadow: black 1px 0 4px;
 }
 
 /* nav-header */
@@ -141,21 +146,21 @@ header {
   background-repeat: no-repeat;
 }
 
-header .title {
+.header .title {
   position: absolute;
-  top: 65%;
+  top: 60%;
   background: white;
   padding: 0.3rem 2.3rem;
-  font-size: 1.8rem;
+  font-size: 2.6rem;
   font-weight: bold;
 }
-header .sub-title {
+.header .sub-title {
   position: absolute;
   top: 77%;
   color: white;
   background: black;
   padding: 0.2rem 1.4rem;
-  font-size: 1.5rem;
+  font-size: 2.4rem;
 }
 /* aside */
 aside {
@@ -196,8 +201,13 @@ aside button img {
 }
 .nav-detailed .nav-list .nav-item {
   flex: 1;
+  border-right: 0.1rem solid #d7eeea;
+}
+.nav-detailed .nav-list .nav-item:last-child {
+  border: 0;
 }
 .nav-detailed .nav-list .nav-item a {
+  background-color: #ebf7f5;
   display: block;
   padding-top: 1.5rem;
   padding-left: 1rem;
@@ -209,7 +219,7 @@ aside button img {
   font-weight: bold;
 }
 .nav-detailed .nav-list .nav-item a:hover {
-  background-color: rgb(117, 143, 145);
+  background-color: #d1ebe7;
 }
 
 /* signup */
@@ -235,14 +245,17 @@ aside button img {
   flex-basis: 40%;
 }
 .signup .container form input[type="text"] {
-  border: 1px solid gray;
+  border: 1px solid #d4d4d4;
   padding: 0.2rem 0rem;
   font-size: 1.1rem;
   width: 65%;
+  color: #cbcbcb;
 }
 .signup .container form button {
-  border: 1px solid gray;
-  color: rgb(131, 129, 129);
+  border: 1px solid #d4d4d4;
+  background-color: #f1f1f1;
+  color: #cbcbcb;
+  /* color: rgb(131, 129, 129); */
   padding: 0.2rem 0rem;
   justify-content: center;
   font-size: 1.1rem;
@@ -262,25 +275,30 @@ aside button img {
 .recent-news .first-article img {
   width: 100%;
   height: 30%;
-  border-style: ridge;
+  /* border-style: ridge; */
+  box-shadow: 0 0 0 0.3em #fefefe, 0 0 3px 0.4em #c7c7c7;
   border-width: medium;
 }
 .recent-news .second-article img {
   height: 37%;
   width: 100%;
-  border-style: ridge;
+  box-shadow: 0 0 0 0.3em #fefefe, 0 0 3px 0.4em #c7c7c7;
+  /* border-style: ridge; */
   border-width: medium;
 }
 .recent-news .third-article img {
   height: 37%;
   width: 100%;
-  border-style: ridge;
+  box-shadow: 0 0 0 0.3em #fefefe, 0 0 3px 0.4em #c7c7c7;
+  /* border-style: ridge; */
   border-width: medium;
 }
 .recent-news .last-article img {
   width: 100%;
   height: 37%;
-  border-style: ridge;
+  box-shadow: 0 0 0 0.3em #fefefe, 0 0 3px 0.4em #c7c7c7;
+
+  /* border-style: ridge; */
   border-width: medium;
 }
 .recent-news article .content {
@@ -320,7 +338,7 @@ footer .policy ul li:nth-child(2) {
   font-family: var(--cursive-font);
   font-size: 1.5rem;
   font-weight: bold;
-  color: white;
+  color: #f1f1f1;
 }
 
 header .sub-title {
@@ -366,14 +384,12 @@ footer .social-network > img {
 }
 
 aside article button {
+  border-color: #d2d0d0;
+  border-radius: 0.2rem;
   color: var(--main-color);
   font-size: 1rem;
 }
 
 aside article img {
   filter: invert(1) sepia(1) saturate(5) hue-rotate(135deg);
-}
-
-.last-container {
-  display: none;
 }

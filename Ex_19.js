@@ -6,18 +6,7 @@
     pass !== undefined && (el.style.color = pass ? "green" : "red");
     return el;
   };
-  const assert = (pass, message) => {
-    if (!root.id) {
-      const name = message.split(" ").slice(-1)[0];
-      root.dataset.test = name;
-    }
-    if (message.includes("delay")) {
-      const name = message.split(" ").slice(-1)[0];
-      const parent = document.querySelector(`[data-test='${name}']`);
-      return parent.appendChild(result(message, pass));
-    }
-    return root.appendChild(result(message, pass));
-  };
+  const assert = (pass, message) => root.appendChild(result(message, pass));
   function test(description, testBlock) {
     const parent = root;
     root = assert(undefined, description).appendChild(
@@ -26,6 +15,17 @@
     testBlock();
     root = parent;
   }
+
+  const originalSetTimeout = global.setTimeout;
+  const newsetTimeout = (fn, delay, ...params) => {
+    const newCB = (prevRoot) => () => {
+      root = prevRoot;
+      fn(...params);
+    };
+    originalSetTimeout(newCB(root), delay);
+  };
+
   global.assert = assert;
   global.test = test;
+  global.setTimeout = newsetTimeout;
 })(window);

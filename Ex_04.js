@@ -9,8 +9,14 @@ const mergeArrays = (lArray, sArray) => {
     if (element1 < element2) {
       j++;
     } else {
-      lArray.pop();
-      lArray.splice(j, 0, element2);
+      const r = lArray.pop();
+      const auxArray = lArray.slice(j);
+      lArray[j] = element2;
+      let l = j + 1;
+      for (const e of auxArray) {
+        lArray[l] = e;
+        l++;
+      }
       j++;
       k++;
     }

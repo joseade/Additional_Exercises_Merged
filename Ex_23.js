@@ -30,6 +30,8 @@ const findPrimes = (n) => {
     }
     i++;
   }
+  console.log("\n");
+  console.log(q);
   return q;
 };
 

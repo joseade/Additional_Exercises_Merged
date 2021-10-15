@@ -1,8 +1,10 @@
 import { io } from "socket.io-client";
 import { eventChannel } from "redux-saga";
 import { take, put } from "redux-saga/effects";
+
+const { REACT_APP_URL } = process.env;
 const connect = () => {
-  const socket = io("http://localhost:4000");
+  const socket = io(REACT_APP_URL);
   return socket;
 };
 

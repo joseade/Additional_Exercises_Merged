@@ -11,6 +11,7 @@
     <script src="./Ex_19.js"></script>
     <script type="module">
       assert(true, "Outside and before the test block");
+
       test("TestBlock A", function () {
         assert(true, "Inside TestBlock A");
         setTimeout(() => assert(true, "test delayed A"), 1000);

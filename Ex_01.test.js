@@ -41,7 +41,7 @@ it("Error in all tasks", async () => {
   expect(data.length).toBe(tasksLength);
 });
 
-it("Error in all tasks", async () => {
+it("Error and Success tasks", async () => {
   let tasks = [
     taskFactorySample(500, true, 1),
     taskFactorySample(400, true, 2),
@@ -54,7 +54,6 @@ it("Error in all tasks", async () => {
   const tasksLength = tasks.length;
   const batches = runBatches(tasks, pool_size);
   const data = await batches;
-  console.log(data);
   expect(data).toStrictEqual([
     { value: 1 },
     { value: 2 },

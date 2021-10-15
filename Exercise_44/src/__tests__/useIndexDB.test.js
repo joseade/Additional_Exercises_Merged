@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { fireEvent } from "@testing-library/dom";
-import useIndexDB from "./useIndexDB";
+import useIndexDB from "../hooks/useIndexDB";
 
 test("Persists on component unmounts and rerenders", () => {
   const Comp = () => {

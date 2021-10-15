@@ -1,6 +1,13 @@
-body {
+.main-container {
+  max-width: 400px;
+  height: 100vh;
   display: block;
-  column-count: 2;
+  overflow: scroll;
+}
+
+.nav-detailed {
+  position: sticky;
+  top: 0px;
 }
 
 /* small-image */
@@ -10,17 +17,21 @@ body {
 }
 .small-image img {
   border-radius: 50%;
-  width: 9vh;
-  height: 9vh;
+  width: 13vh;
+  height: 13vh;
 }
 .small-image .container {
-  top: 4.5vh;
-  left: 24.5vw;
+  top: 50%;
+  left: 50%;
 }
 .small-image .container > div {
   font-size: 1.2rem;
 }
 /* nav-header */
+
+.nav-header {
+  grid-column: 1/-1;
+}
 .nav-header .nav-list {
   justify-content: space-evenly;
   gap: 0rem;
@@ -45,7 +56,7 @@ header {
   align-content: space-around;
 }
 .signup .container .text {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   flex-basis: 80%;
 }
 .signup form {
@@ -70,12 +81,16 @@ main {
   padding: 0.4rem 0px;
 }
 
-header .title {
-  font-size: 1.5rem;
-  top: 78%;
+.header .title {
+  font-size: 1.8rem;
+  top: 72%;
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 80%;
 }
 
-header .sub-title {
+.header .sub-title {
+  font-size: 1.8rem;
+
   width: 100%;
   top: auto;
   bottom: 0px;
@@ -100,10 +115,23 @@ header .sub-title {
 }
 .recent-news article {
   border-bottom: 1px dashed black;
+  padding-bottom: 1.2rem;
 }
 
 .recent-news .first-article img {
-  height: 50%;
+  height: 25vh;
+}
+
+.recent-news .second-article img {
+  height: 30vh;
+}
+
+.recent-news .third-article img {
+  height: 30vh;
+}
+
+.recent-news .last-article img {
+  height: 30vh;
 }
 
 .last-container {
@@ -117,12 +145,13 @@ header .sub-title {
   /* border: 1px solid black; */
 }
 
-.last-container .nav-detailed {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
+.recent-news article {
+  width: 90%;
+  flex: 0px;
+  align-self: center;
 }
 
-.last-container {
-  display: block;
+.signup {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem;
 }

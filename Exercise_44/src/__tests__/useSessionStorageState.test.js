@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { fireEvent } from "@testing-library/dom";
-import useSessionStorageState from "./useSessionStorageState";
+import useSessionStorageState from "../hooks/useSessionStorageState";
 
 test("Persists on component unmounts and rerenders", () => {
   const Comp = () => {

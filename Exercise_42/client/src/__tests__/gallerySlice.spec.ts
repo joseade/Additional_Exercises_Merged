@@ -3,7 +3,7 @@ import galleryReducer, {
   searchImages,
   searchImagesSucces,
   searchImagesError,
-} from "./gallerySlice";
+} from "../components/gallerySlice";
 
 describe("gallery reducer", () => {
   const initialState: GalleryState = {

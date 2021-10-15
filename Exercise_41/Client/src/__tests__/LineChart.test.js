@@ -1,5 +1,5 @@
-import LineChart from "./LineChart";
-import { ChartThree } from "./LineChart.stories";
+import LineChart from "../components/LineChart";
+import { ChartThree } from "../components/LineChart.stories";
 import { render, screen } from "@testing-library/react";
 
 test("should render", () => {

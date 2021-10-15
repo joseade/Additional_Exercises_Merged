@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { fireEvent } from "@testing-library/dom";
-import useLocalStorageState from "./useLocalStorageState";
+import useLocalStorageState from "../hooks/useLocalStorageState";
 
 test("Persists on component unmounts and rerenders", () => {
   const Comp = () => {

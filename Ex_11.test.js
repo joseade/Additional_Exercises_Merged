@@ -2,7 +2,7 @@
  *  @jest-environment jsdom
  */
 const { querySelectorAll } = require("./Ex_11.js");
-test("Determine if a tree is a symmetric", () => {
+test("Should select parent nodes", () => {
   const element = document.createElement("section");
   document.body.append(element);
   element.innerHTML = `<div id="1" class="note"><input type="checkbox" class="is-complete"
@@ -21,4 +21,5 @@ test("Determine if a tree is a symmetric", () => {
     3
   );
   expect(querySelectorAll("div.note < span a").length).toBe(1);
+  expect(querySelectorAll("div.note").length).toBe(6);
 });

@@ -7,7 +7,7 @@ import {
 
 function* apiProcess({ payload }: { type: string; payload: string }) {
   try {
-    const { data } = yield call(axios, payload);
+    const { data } = yield call(axios.get, payload);
     // const res = yield call(fetch, payload);
     // const data = yield call(res, res.json);
     // const { images } = data;
